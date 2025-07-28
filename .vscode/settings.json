@@ -1,0 +1,137 @@
+{
+  // === UNIVERSAL EDITOR SETTINGS ===
+  // These apply to all file types and should be consistent everywhere
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+  "editor.guides.bracketPairs": "active",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+
+  // === PYTHON CONFIGURATION ===
+  "python.analysis.ignore": ["output", "logs", "ai_context", "ai_working"],
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.fixAll": ["source.unusedImports"],
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.autoSearchPaths": true,
+
+  // Workspace-specific Python paths
+  "python.analysis.extraPaths": [],
+
+  // === PYTHON FORMATTING ===
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.rulers": [120],
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.unusedImports": "explicit",
+      "source.organizeImports": "explicit",
+      "source.formatDocument": "explicit"
+    }
+  },
+
+  // === RUFF CONFIGURATION ===
+  "ruff.nativeServer": "on",
+  "ruff.configuration": "${workspaceFolder}/ruff.toml",
+  "ruff.interpreter": ["${workspaceFolder}/.venv/bin/python"],
+  "ruff.exclude": [
+    "**/output/**",
+    "**/logs/**",
+    "**/ai_context/**",
+    "**/ai_working/**"
+  ],
+
+  // === TESTING CONFIGURATION ===
+  // Testing disabled at workspace level due to import conflicts
+  // Use the recipe-tool.code-workspace file for better multi-project testing
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": false,
+
+  // === JSON FORMATTING ===
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // === FILE WATCHING & SEARCH OPTIMIZATION ===
+  "files.watcherExclude": {
+    "**/.uv/**": true,
+    "**/.venv/**": true,
+    "**/node_modules/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true
+  },
+  "search.exclude": {
+    "**/.uv": true,
+    "**/.venv": true,
+    "**/.*": true,
+    "**/__pycache__": true,
+    "**/.data": true,
+    "**/ai_context": true,
+    "**/ai_working": true
+  },
+  // === FILE ASSOCIATIONS ===
+  "files.associations": {
+    "*.toml": "toml"
+  },
+  // === SPELL CHECKER CONFIGURATION ===
+  // (Only include if using Code Spell Checker extension)
+  "cSpell.ignorePaths": [
+    ".claude",
+    ".devcontainer",
+    ".git",
+    ".github",
+    ".gitignore",
+    ".vscode",
+    ".venv",
+    "node_modules",
+    "package-lock.json",
+    "pyproject.toml",
+    "settings.json",
+    "uv.lock",
+    "output",
+    "logs",
+    "*.md",
+    "*.excalidraw",
+    "ai_context",
+    "ai_working"
+  ],
+  "cSpell.words": [
+    "charliermarsh",
+    "codegen",
+    "debugpy",
+    "docstrings",
+    "dotenv",
+    "edgehandle",
+    "fastmcp",
+    "levelname",
+    "levelno",
+    "ollama",
+    "pycache",
+    "pydantic",
+    "pydocstyle",
+    "pyproject",
+    "pyright",
+    "pytest",
+    "subschema",
+    "tamasfe",
+    "toplevel",
+    "uvicorn",
+    "venv"
+  ]
+}

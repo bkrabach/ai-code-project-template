@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "GitHub.copilot",
+    "github.codespaces",
+    "aaron-bond.better-comments",
+    "bierner.markdown-mermaid",
+    "bierner.markdown-preview-github-styles",
+    "charliermarsh.ruff",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-python.debugpy",
+    "ms-python.python",
+    "ms-vscode.makefile-tools",
+    "tamasfe.even-better-toml",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

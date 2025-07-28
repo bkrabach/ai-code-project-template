@@ -1,0 +1,26 @@
+[project]
+name = "workspace"
+version = "0.1.0"
+description = "Workspace project"
+requires-python = ">=3.11"
+
+[tool.uv.workspace]
+# Add all projects in the workspace
+members = []
+
+[tool.uv.sources]
+# Example: my-project = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "build>=1.2.2.post1",
+    "debugpy>=1.8.14",
+    "playwright>=1.54.0",
+    "pyright>=1.1.403",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=6.1.1",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.11.10",
+    "twine>=6.1.0",
+]

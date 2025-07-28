@@ -1,0 +1,65 @@
+{
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/tools/make-check.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/tools/notify.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(chmod:*)",
+      "Bash(cp:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(git log:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git status:*)",
+      "Bash(grep:*)",
+      "Bash(kill:*)",
+      "Bash(ls:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(make:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(pkill:*)",
+      "Bash(ps:*)",
+      "Bash(pyright:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(rg:*)",
+      "Bash(source:*)",
+      "Bash(timeout:*)",
+      "Bash(touch:*)",
+      "Bash(true)",
+      "Bash(uv:*)",
+      "Bash(uvx:*)",
+      "Bash(unzip:*)",
+      "mcp__browser-use",
+      "mcp__context7",
+      "WebFetch"
+    ],
+    "deny": []
+  }
+}

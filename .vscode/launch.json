@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "name": "Python: Attach to Debugger",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5678
+      },
+      "justMyCode": true
+    }
+  ]
+}
