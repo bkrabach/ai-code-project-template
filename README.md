@@ -401,14 +401,15 @@ See existing commands for examples
 
 ### Configure Notifications [Claude Code only]
 
-- Edit `.ai/tools/notify.sh` for custom messages
+- Edit `.claude/tools/notify.sh` for custom messages
 - Adjust notification triggers in settings
 - Add sound alerts if desired
 
 ### Extend Automation [Claude Code only]
 
+In `.claude/settings.json`:
+
 ```json
-// In .claude/settings.json or .gemini/settings.json
 {
   "hooks": {
     "PostToolUse": [
@@ -428,22 +429,7 @@ See existing commands for examples
 - [Command Reference](.ai/docs/commands.md) - All commands explained
 - [Automation Guide](.ai/docs/automation.md) - Hooks and quality checks
 - [Context Management](.ai/docs/ai-context.md) - Feeding AI effectively
-- [Team Scaling](.ai/docs/team-guide.md) - Share with your team
 - [Philosophy Guide](.ai/docs/philosophy.md) - Why this approach works
-
-### Get Help
-
-- [Troubleshooting](.ai/docs/troubleshooting.md)
-- [Discord Community](https://discord.gg/my-assistant)
-- [GitHub Discussions](https://github.com/brian-krabach/my-assistant/discussions)
-
-## 🌟 Success Stories
-
-> "I prototyped our entire MVP in a weekend. What used to take months now takes days." - Startup Founder
-
-> "The desktop notifications changed everything. I stay in flow for hours." - Senior Engineer
-
-> "My team adopted this and our velocity doubled. Same developers, amplified output." - Tech Lead
 
 ## 🚀 Start Your Journey
 
@@ -456,7 +442,6 @@ Welcome to AI-amplified development. Let's build something amazing.
 
 ---
 
-<p align="center">
-Made with ❤️ by developers, for developers<br>
+Made with ❤️ by developers, for developers
+
 Star this repo if it helps you build faster
-</p>
