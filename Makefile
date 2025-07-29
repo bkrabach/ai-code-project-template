@@ -1,5 +1,4 @@
-# My AI Workspace Makefile
-# Multi-service AI application with Reflex frontend
+# Workspace Makefile
 
 # Include the recursive system
 repo_root = $(shell git rev-parse --show-toplevel)
