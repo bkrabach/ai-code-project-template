@@ -17,13 +17,12 @@ This isn't just another project template. It's a complete AI-first development e
 ## 🎬 See It In Action
 
 ```bash
-# 1. Clone this template
-git clone https://github.com/[your-username]/ai-code-project-template my-next-big-idea
-cd my-next-big-idea
+# 1. Create from template
+Click the "Use this template" button on GitHub to create a new repository.
 
-# 2. Make it yours
-rm -rf .git && git init
-git add . && git commit -m "Initial commit from template"
+# 2. Clone your new repository
+git clone https://github.com/[your-username]/[your-new-repo-name]
+cd [your-new-repo-name]
 
 # 3. In your AI assistant, run:
 /prime
@@ -147,16 +146,13 @@ Feed AI the right information at the right time:
 
 ### 1. Create Your Project
 
-```bash
-# Clone the template
-git clone https://github.com/[your-username]/ai-code-project-template my-project
-cd my-project
+1.  Click the **Use this template** button on the GitHub repository page.
+2.  Give your new repository a name and create it.
+3.  Clone your new repository to your local machine:
 
-# Make it yours
-rm -rf .git
-git init
-git add .
-git commit -m "Initial commit from AI code project template"
+```bash
+git clone https://github.com/[your-username]/[your-new-repo-name].git
+cd [your-new-repo-name]
 ```
 
 ### 2. First AI Assistant Session
