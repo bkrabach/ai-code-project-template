@@ -1,6 +1,6 @@
 # Philosophy Guide
 
-Understanding the philosophy behind this template is key to achieving 10x productivity with Claude Code.
+Understanding the philosophy behind this template is key to achieving 10x productivity with AI assistants.
 
 ## 🧠 Core Philosophy: Human Creativity, AI Velocity
 
@@ -15,12 +15,14 @@ This isn't about AI replacing developers—it's about developers achieving what 
 ### 1. Amplification, Not Replacement
 
 **Traditional Approach**:
+
 - Developer thinks of solution
 - Developer implements every detail
 - Developer tests and debugs
 - Time: Days to weeks
 
 **AI-Amplified Approach**:
+
 - Developer envisions solution
 - AI implements under guidance
 - Developer reviews and refines
@@ -31,12 +33,14 @@ This isn't about AI replacing developers—it's about developers achieving what 
 ### 2. Philosophy-Driven Development
 
 **Why Philosophy Matters**:
+
 - Consistency across all code
 - Decisions aligned with principles
 - AI understands your preferences
 - Team shares mental model
 
 **In Practice**:
+
 ```
 /prime  # Loads philosophy
 # Now every AI interaction follows your principles
@@ -45,12 +49,14 @@ This isn't about AI replacing developers—it's about developers achieving what 
 ### 3. Flow State Preservation
 
 **Flow Killers** (Eliminated):
+
 - Context switching for formatting
 - Looking up syntax details
 - Writing boilerplate code
 - Manual quality checks
 
 **Flow Enhancers** (Amplified):
+
 - Desktop notifications
 - Automated quality
 - Natural language interaction
@@ -63,6 +69,7 @@ This isn't about AI replacing developers—it's about developers achieving what 
 **Principle**: Every line of code should have a clear purpose.
 
 **Application**:
+
 ```python
 # ❌ Over-engineered
 class AbstractFactoryManagerSingleton:
@@ -75,6 +82,7 @@ def get_user(user_id: str) -> User:
 ```
 
 **Why It Works**: Simple code is:
+
 - Easier to understand
 - Faster to modify
 - Less likely to break
@@ -85,12 +93,14 @@ def get_user(user_id: str) -> User:
 **Principle**: Build for today's needs, not tomorrow's possibilities.
 
 **Application**:
+
 - Start with monolith, split when needed
 - Use boring technology that works
 - Optimize when you measure, not when you guess
 - Choose patterns that fit, not patterns that impress
 
 **Example Evolution**:
+
 ```
 Version 1: Simple function
 Version 2: Add error handling (when errors occur)
@@ -103,12 +113,14 @@ Version 4: Extract to service (when scale demands)
 **Principle**: Good architecture emerges from good practices.
 
 **Application**:
+
 - Don't over-plan the system
 - Let patterns reveal themselves
 - Refactor when clarity emerges
 - Trust the iterative process
 
 **Real Example**:
+
 ```
 Week 1: Build auth quickly
 Week 2: Notice pattern, extract utilities
@@ -120,11 +132,13 @@ Week 4: Clear architecture has emerged naturally
 
 ### Think "Bricks & Studs"
 
-**Concept**: 
+**Concept**:
+
 - **Brick** = Self-contained module with one responsibility
 - **Stud** = Clean interface others connect to
 
 **Implementation**:
+
 ```python
 # user_service.py (Brick)
 """Handles all user-related operations"""
@@ -142,12 +156,14 @@ def _hash_password(): ...
 ### Contract-First Development
 
 **Process**:
+
 1. Define what the module does
 2. Design the interface
 3. Implement the internals
 4. Test the contract
 
 **Example**:
+
 ```python
 # 1. Purpose (README in module)
 """Email Service: Sends transactional emails"""
@@ -158,7 +174,7 @@ class EmailRequest:
     to: str
     subject: str
     body: str
-    
+
 async def send_email(request: EmailRequest) -> bool:
     """Send email, return success status"""
 
@@ -176,12 +192,14 @@ def test_email_contract():
 **Philosophy**: When modules need significant changes, rebuild them.
 
 **Why**:
+
 - Clean slate avoids technical debt
 - AI excels at regeneration
 - Tests ensure compatibility
 - Cleaner than patching patches
 
 **Process**:
+
 ```
 /ultrathink-task Regenerate the auth module with these new requirements:
 - Add OAuth support
@@ -220,7 +238,7 @@ class FlyingDog(Dog, Bird): ...  # 😱
 class Dog:
     movement: MovementBehavior
     sound: SoundBehavior
-    
+
 flying_dog = Dog(
     movement=FlyingMovement(),
     sound=BarkSound()
@@ -239,11 +257,11 @@ def get_user(id):
 def get_user(user_id: str) -> Result[User, str]:
     if not is_valid_uuid(user_id):
         return Err("Invalid user ID format")
-    
+
     user = db.get_user(user_id)
     if not user:
         return Err("User not found")
-        
+
     return Ok(user)
 ```
 
@@ -254,6 +272,7 @@ def get_user(user_id: str) -> Result[User, str]:
 **Principle**: Give AI enough context to make good decisions.
 
 **Application**:
+
 ```
 # ❌ Minimal context
 Fix the bug in auth
@@ -270,12 +289,14 @@ Follow our error handling patterns in IMPLEMENTATION_PHILOSOPHY.md.
 **Principle**: First version gets you 80%, iteration gets you to 100%.
 
 **Process**:
+
 1. Get something working
 2. See it in action
 3. Refine based on reality
 4. Repeat until excellent
 
 **Example Session**:
+
 ```
 Create a data table component
 [Reviews output]
@@ -290,12 +311,14 @@ Make the sorted column show an arrow
 **Principle**: AI is powerful but not infallible.
 
 **Practice**:
+
 - Review generated code
 - Run tests immediately
 - Check edge cases
 - Validate against requirements
 
 **Workflow**:
+
 ```
 /ultrathink-task [complex request]
 # Review the plan before implementation
@@ -349,6 +372,7 @@ Team member: /prime
 ### Evolution Through Experience
 
 This philosophy should evolve:
+
 - Add principles that work
 - Remove ones that don't
 - Adjust based on team needs
@@ -357,6 +381,7 @@ This philosophy should evolve:
 ### Contributing Principles
 
 When adding principles:
+
 1. Must solve real problems
 2. Should be broadly applicable
 3. Include concrete examples
@@ -382,6 +407,7 @@ When adding principles:
 ### The Ultimate Goal
 
 **Create systems where:**
+
 - Humans focus on what matters
 - AI handles what's repetitive
 - Quality is automatic

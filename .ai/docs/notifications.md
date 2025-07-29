@@ -1,10 +1,11 @@
-# Desktop Notifications Guide
+# Desktop Notifications Guide [Claude Code only]
 
 Never miss important Claude Code events with native desktop notifications on all platforms.
 
 ## 🔔 Overview
 
 The notification system keeps you in flow by alerting you when:
+
 - Claude Code needs permission to proceed
 - Tasks complete successfully
 - Errors require your attention
@@ -14,24 +15,28 @@ The notification system keeps you in flow by alerting you when:
 ## 🖥️ Platform Support
 
 ### macOS
+
 - Native Notification Center
 - Supports title, subtitle, and message
 - Respects Do Not Disturb settings
 - Sound alerts optional
 
 ### Linux
+
 - Uses `notify-send` (libnotify)
 - Full desktop environment support
 - Works with GNOME, KDE, XFCE, etc.
 - Custom icons supported
 
 ### Windows
+
 - Native Windows toast notifications
 - Action Center integration
 - Works in PowerShell/WSL
 - Supports notification grouping
 
 ### WSL (Windows Subsystem for Linux)
+
 - Automatically detects WSL environment
 - Routes to Windows notifications
 - Full feature support
@@ -40,6 +45,7 @@ The notification system keeps you in flow by alerting you when:
 ## 🚀 Quick Start
 
 Notifications work out of the box! The system automatically:
+
 1. Detects your platform
 2. Uses the best notification method
 3. Falls back to console output if needed
@@ -65,6 +71,7 @@ You Stay In Flow ✨
 ### JSON Input Format
 
 The notification script receives:
+
 ```json
 {
   "session_id": "abc123",
@@ -78,6 +85,7 @@ The notification script receives:
 ### Smart Context Detection
 
 Notifications include:
+
 - **Project Name**: From git repo or directory name
 - **Session ID**: Last 6 characters for multi-window users
 - **Message**: The actual notification content
@@ -93,13 +101,17 @@ Edit `.claude/settings.json` to customize when notifications appear:
 ```json
 {
   "hooks": {
-    "Notification": [{
-      "matcher": ".*error.*",
-      "hooks": [{
-        "type": "command",
-        "command": ".claude/tools/notify-error.sh"
-      }]
-    }]
+    "Notification": [
+      {
+        "matcher": ".*error.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/tools/notify-error.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -107,18 +119,21 @@ Edit `.claude/settings.json` to customize when notifications appear:
 ### Adding Sounds
 
 **macOS** - Add to `notify.sh`:
+
 ```bash
 # Play sound with notification
 osascript -e 'display notification "..." sound name "Glass"'
 ```
 
 **Linux** - Add to `notify.sh`:
+
 ```bash
 # Play sound after notification
 paplay /usr/share/sounds/freedesktop/stereo/complete.oga &
 ```
 
 **Windows/WSL** - Add to PowerShell section:
+
 ```powershell
 # System sounds
 [System.Media.SystemSounds]::Exclamation.Play()
@@ -127,11 +142,13 @@ paplay /usr/share/sounds/freedesktop/stereo/complete.oga &
 ### Custom Icons
 
 **Linux**:
+
 ```bash
 notify-send -i "/path/to/icon.png" "Title" "Message"
 ```
 
 **macOS** (using terminal-notifier):
+
 ```bash
 terminal-notifier -title "Claude Code" -message "Done!" -appIcon "/path/to/icon.png"
 ```
@@ -139,6 +156,7 @@ terminal-notifier -title "Claude Code" -message "Done!" -appIcon "/path/to/icon.
 ### Notification Categories
 
 Add urgency levels:
+
 ```bash
 # In notify.sh
 case "$MESSAGE" in
@@ -165,12 +183,14 @@ notify-send -u "$URGENCY" -t "$TIMEOUT" "$TITLE" "$MESSAGE"
 ### No Notifications Appearing
 
 1. **Check permissions**:
+
    ```bash
    # Make script executable
    chmod +x .claude/tools/notify.sh
    ```
 
 2. **Test manually**:
+
    ```bash
    echo '{"message": "Test notification", "cwd": "'$(pwd)'"}' | .claude/tools/notify.sh
    ```
@@ -184,16 +204,19 @@ notify-send -u "$URGENCY" -t "$TIMEOUT" "$TITLE" "$MESSAGE"
 ### Platform-Specific Issues
 
 **macOS**:
+
 - Check System Preferences → Notifications → Terminal/Claude Code
 - Ensure notifications are allowed
 - Try: `osascript -e 'display notification "Test"'`
 
 **Linux**:
+
 - Install libnotify: `sudo apt install libnotify-bin`
 - Test: `notify-send "Test"`
 - Check if notification daemon is running
 
 **Windows/WSL**:
+
 - Ensure Windows notifications are enabled
 - Check Focus Assist settings
 - Test PowerShell directly
@@ -201,6 +224,7 @@ notify-send -u "$URGENCY" -t "$TIMEOUT" "$TITLE" "$MESSAGE"
 ### Silent Failures
 
 Enable verbose logging:
+
 ```bash
 # Add to notify.sh
 set -x  # Enable command printing
@@ -212,6 +236,7 @@ exec 2>/tmp/notify-debug.log  # Redirect errors
 ### Notification History
 
 Track all notifications:
+
 ```bash
 # Add to notify.sh
 echo "$(date): $MESSAGE" >> ~/.claude-notifications.log
@@ -220,6 +245,7 @@ echo "$(date): $MESSAGE" >> ~/.claude-notifications.log
 ### Conditional Notifications
 
 Only notify for important events:
+
 ```bash
 # Skip trivial notifications
 if [[ "$MESSAGE" =~ ^(Saved|Loaded|Reading) ]]; then
@@ -230,6 +256,7 @@ fi
 ### Remote Notifications
 
 Send to your phone via Pushover/Pushbullet:
+
 ```bash
 # Add to notify.sh for critical errors
 if [[ "$MESSAGE" =~ "critical error" ]]; then
@@ -243,6 +270,7 @@ fi
 ### Notification Groups
 
 Group related notifications:
+
 ```bash
 # macOS - Group by project
 osascript -e "display notification \"$MESSAGE\" with title \"$PROJECT\" group \"$PROJECT\""
@@ -263,13 +291,17 @@ osascript -e "display notification \"$MESSAGE\" with title \"$PROJECT\" group \"
 ```json
 {
   "hooks": {
-    "PostToolUse": [{
-      "matcher": "Bash.*make.*build",
-      "hooks": [{
-        "type": "command",
-        "command": ".claude/tools/notify-build.sh"
-      }]
-    }]
+    "PostToolUse": [
+      {
+        "matcher": "Bash.*make.*build",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/tools/notify-build.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -298,8 +330,9 @@ MESSAGE="Task completed in ${DURATION}s"
 ## 🌟 Tips & Tricks
 
 1. **Use Emojis**: They make notifications scannable
+
    - ✅ Success
-   - ❌ Error  
+   - ❌ Error
    - ⚠️ Warning
    - 🔄 In Progress
    - 🎉 Major Success
@@ -307,6 +340,7 @@ MESSAGE="Task completed in ${DURATION}s"
 2. **Keep It Short**: Notifications should be glanceable
 
 3. **Action Words**: Start with verbs
+
    - "Completed build"
    - "Fixed 3 errors"
    - "Need input for..."
@@ -319,4 +353,3 @@ MESSAGE="Task completed in ${DURATION}s"
 
 - [Automation Guide](automation.md) - Hook system
 - [Command Reference](commands.md) - Triggering notifications
-- [Team Guide](team-guide.md) - Notification standards

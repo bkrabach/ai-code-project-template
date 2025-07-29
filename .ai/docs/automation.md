@@ -1,6 +1,6 @@
-# Automation Guide
+# Automation Guide [Claude Code only]
 
-This guide explains how automation works in the Claude Code template and how to extend it for your needs.
+This guide explains how automation works for Claude Code and how to extend it for your needs.
 
 ## 🔄 How Automation Works
 
@@ -11,13 +11,17 @@ Claude Code supports hooks that trigger actions based on events:
 ```json
 {
   "hooks": {
-    "EventName": [{
-      "matcher": "pattern",
-      "hooks": [{
-        "type": "command",
-        "command": "script-to-run.sh"
-      }]
-    }]
+    "EventName": [
+      {
+        "matcher": "pattern",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "script-to-run.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -25,6 +29,7 @@ Claude Code supports hooks that trigger actions based on events:
 ### Current Automations
 
 #### 1. **Automatic Quality Checks**
+
 - **Trigger**: After any file edit/write
 - **Script**: `.claude/tools/make-check.sh`
 - **What it does**:
@@ -34,6 +39,7 @@ Claude Code supports hooks that trigger actions based on events:
   - Works with monorepos
 
 #### 2. **Desktop Notifications**
+
 - **Trigger**: Any Claude Code notification event
 - **Script**: `.claude/tools/notify.sh`
 - **Features**:
@@ -82,7 +88,7 @@ lint:
 	@echo "Linting code..."
 	# Python
 	ruff check . || true
-	# JavaScript/TypeScript  
+	# JavaScript/TypeScript
 	eslint . --fix || true
 
 .PHONY: typecheck
@@ -107,6 +113,7 @@ test:
 For different languages/frameworks:
 
 **Python Project**:
+
 ```makefile
 check: format lint typecheck test
 
@@ -125,6 +132,7 @@ test:
 ```
 
 **Node.js Project**:
+
 ```makefile
 check: format lint typecheck test
 
@@ -142,6 +150,7 @@ test:
 ```
 
 **Go Project**:
+
 ```makefile
 check: format lint test
 
@@ -190,18 +199,21 @@ esac
 ### Adding Sound Alerts
 
 **macOS**:
+
 ```bash
 # Add to notify.sh
 afplay /System/Library/Sounds/Glass.aiff
 ```
 
 **Linux**:
+
 ```bash
 # Add to notify.sh
 paplay /usr/share/sounds/freedesktop/stereo/complete.oga
 ```
 
 **Windows/WSL**:
+
 ```powershell
 # Add to PowerShell section
 [System.Media.SystemSounds]::Exclamation.Play()
@@ -214,18 +226,23 @@ paplay /usr/share/sounds/freedesktop/stereo/complete.oga
 ```json
 {
   "hooks": {
-    "PostToolUse": [{
-      "matcher": "Write|Edit",
-      "hooks": [{
-        "type": "command",
-        "command": ".claude/tools/auto-format.sh"
-      }]
-    }]
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/tools/auto-format.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
 
 Create `.claude/tools/auto-format.sh`:
+
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -255,18 +272,23 @@ esac
 ```json
 {
   "hooks": {
-    "PostToolUse": [{
-      "matcher": "Edit|Write",
-      "hooks": [{
-        "type": "command",
-        "command": ".claude/tools/auto-commit.sh"
-      }]
-    }]
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/tools/auto-commit.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
 
 Create `.claude/tools/auto-commit.sh`:
+
 ```bash
 #!/usr/bin/env bash
 # Auto-commit changes with descriptive messages
@@ -286,13 +308,17 @@ git commit -m "$COMMIT_MSG" --no-verify || true
 ```json
 {
   "hooks": {
-    "PostToolUse": [{
-      "matcher": "Write",
-      "hooks": [{
-        "type": "command",
-        "command": ".claude/tools/run-tests.sh"
-      }]
-    }]
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/tools/run-tests.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -326,20 +352,20 @@ fi
 
 {
     echo "Starting parallel checks..."
-    
+
     # Run all checks in background
     make format &
     PID1=$!
-    
+
     make lint &
     PID2=$!
-    
+
     make typecheck &
     PID3=$!
-    
+
     # Wait for all to complete
     wait $PID1 $PID2 $PID3
-    
+
     echo "All checks complete!"
 }
 ```
@@ -391,10 +417,12 @@ echo '{"file_path": "/path/to/test.py", "success": true}' | .claude/tools/make-c
 ### Common Issues
 
 1. **Script Not Executing**
+
    - Check file permissions: `chmod +x .claude/tools/*.sh`
    - Verify path in settings.json
 
 2. **No Output**
+
    - Check if script outputs to stdout
    - Look for error logs in /tmp/
 
@@ -443,4 +471,3 @@ done
 
 - [Command Reference](commands.md) - Available commands
 - [Notifications Guide](notifications.md) - Desktop alerts
-- [Team Guide](team-guide.md) - Sharing automations

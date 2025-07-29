@@ -5,7 +5,8 @@ Master the art of feeding AI the right information at the right time for optimal
 ## 📚 Overview
 
 The AI context system helps you:
-- Provide consistent reference materials to Claude Code
+
+- Provide consistent reference materials to your AI assistant
 - Generate comprehensive project documentation
 - Manage external library documentation
 - Organize project-specific context
@@ -43,6 +44,7 @@ python tools/build_ai_context_files.py
 ```
 
 This creates rollup files in `ai_context/generated/` containing:
+
 - All source code organized by type
 - Configuration files
 - Documentation
@@ -69,7 +71,7 @@ python tools/build_git_collector_files.py
 ### 3. Load Philosophy
 
 ```
-# In Claude Code
+# In your AI assistant
 /prime
 
 # Or manually reference
@@ -81,6 +83,7 @@ Please read @ai_context/IMPLEMENTATION_PHILOSOPHY.md and follow these principles
 ### IMPLEMENTATION_PHILOSOPHY.md
 
 Core principles that guide all development:
+
 - **Simplicity First**: Clean, maintainable code
 - **Human-Centric**: AI amplifies, doesn't replace
 - **Pragmatic Choices**: Real-world solutions
@@ -89,6 +92,7 @@ Core principles that guide all development:
 ### MODULAR_DESIGN_PHILOSOPHY.md
 
 Architecture principles for scalable systems:
+
 - **Bricks & Studs**: Self-contained modules with clear interfaces
 - **Contract-First**: Define interfaces before implementation
 - **Regenerate, Don't Patch**: Rewrite modules when needed
@@ -125,12 +129,14 @@ FILE_GROUPS = {
 ```
 
 **Features**:
+
 - Groups files by type
 - Respects .gitignore
 - Adds helpful headers
 - Creates single-file rollups
 
 **Customization**:
+
 ```python
 # In build_ai_context_files.py
 FILE_GROUPS["My Custom Group"] = {
@@ -239,12 +245,12 @@ Load relevant context:
 Create reusable context sets:
 
 ```bash
-# .claude/contexts/api-work.md
+# .ai/contexts/api-work.md
 # API Development Context
 
 ## Load these files:
 - @ai_context/generated/api_routes.md
-- @ai_context/generated/models.md  
+- @ai_context/generated/models.md
 - @ai_context/api-standards.md
 - @docs/api/README.md
 
@@ -298,11 +304,11 @@ def is_relevant(file_path: Path) -> bool:
     # Skip generated files
     if 'generated' in file_path.parts:
         return False
-    
+
     # Skip vendor code
     if 'vendor' in file_path.parts:
         return False
-        
+
     # Include based on importance
     important_dirs = ['src', 'api', 'core']
     return any(d in file_path.parts for d in important_dirs)
@@ -312,7 +318,7 @@ def is_relevant(file_path: Path) -> bool:
 
 ```bash
 # Cache expensive context generation
-CONTEXT_CACHE=".claude/context-cache"
+CONTEXT_CACHE=".ai/context-cache"
 CACHE_AGE=$(($(date +%s) - $(stat -f %m "$CONTEXT_CACHE" 2>/dev/null || echo 0)))
 
 if [ $CACHE_AGE -gt 3600 ]; then  # 1 hour
@@ -344,10 +350,10 @@ fi
 ```
 1. Capture context:
    echo "Error details..." > ai_working/tmp/debug-notes.md
-   
+
 2. Add relevant code:
    python tools/collect_files.py "**/auth*.py" > ai_working/tmp/auth-code.md
-   
+
 3. Analyze:
    Help me debug using:
    @ai_working/tmp/debug-notes.md
@@ -359,11 +365,11 @@ fi
 ```
 1. Generate current state:
    make ai-context-files
-   
+
 2. Update docs:
    Update the API documentation based on:
    @ai_context/generated/api_routes.md
-   
+
 3. Verify consistency:
    /review-code-at-path docs/
 ```
@@ -380,4 +386,3 @@ fi
 
 - [Command Reference](commands.md) - Commands that use context
 - [Philosophy Guide](philosophy.md) - Core principles
-- [Team Guide](team-guide.md) - Sharing context standards

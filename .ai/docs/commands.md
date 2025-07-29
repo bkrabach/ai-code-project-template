@@ -1,6 +1,6 @@
 # Command Reference
 
-This guide documents all custom commands available in this Claude Code template.
+This guide documents all custom commands available in this AI code template.
 
 ## 🧠 Core Commands
 
@@ -9,22 +9,25 @@ This guide documents all custom commands available in this Claude Code template.
 **Purpose**: Initialize your project with the right environment and philosophical grounding.
 
 **What it does**:
+
 1. Installs all dependencies (`make install`)
 2. Activates virtual environment
 3. Runs quality checks (`make check`)
 4. Runs tests (`make test`)
 5. Loads philosophy documents
-6. Prepares Claude Code for aligned development
+6. Prepares AI assistant for aligned development
 
 **Usage**:
+
 ```
 /prime
 ```
 
 **When to use**:
+
 - Starting a new project
 - After cloning the template
-- Beginning a new Claude Code session
+- Beginning a new AI assistant session
 - When you want to ensure philosophical alignment
 
 ---
@@ -34,6 +37,7 @@ This guide documents all custom commands available in this Claude Code template.
 **Purpose**: Solve complex problems through orchestrated AI collaboration.
 
 **Architecture**:
+
 ```
 Coordinator Agent
 ├── Architect Agent - Designs approach
@@ -43,11 +47,13 @@ Coordinator Agent
 ```
 
 **Usage**:
+
 ```
 /ultrathink-task <detailed task description>
 ```
 
 **Examples**:
+
 ```
 /ultrathink-task Build a REST API with:
 - User authentication using JWT
@@ -63,6 +69,7 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 ```
 
 **When to use**:
+
 - Complex features requiring architecture
 - Problems needing research and implementation
 - Tasks benefiting from multiple perspectives
@@ -75,6 +82,7 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 **Purpose**: Automatically discover and test web applications with visual validation.
 
 **Features**:
+
 - Auto-discovers running web apps
 - Starts static servers if needed
 - Tests functionality and aesthetics
@@ -82,11 +90,13 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 - Cross-browser support via MCP
 
 **Usage**:
+
 ```
 /test-webapp-ui <url_or_description> [test-focus]
 ```
 
 **Examples**:
+
 ```
 /test-webapp-ui http://localhost:3000
 
@@ -96,6 +106,7 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 ```
 
 **Server Patterns Supported**:
+
 - Running applications (auto-detected via `lsof`)
 - Static HTML sites (auto-served)
 - Node.js apps (`npm start`, `npm run dev`)
@@ -111,11 +122,13 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 **Purpose**: Create structured implementation plans for complex features.
 
 **Usage**:
+
 ```
 /create-plan <feature description>
 ```
 
 **Output**: Detailed plan with:
+
 - Architecture decisions
 - Implementation steps
 - Testing strategy
@@ -129,11 +142,13 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 **Purpose**: Execute a previously created plan systematically.
 
 **Usage**:
+
 ```
 /execute-plan
 ```
 
 **Behavior**:
+
 - Reads the most recent plan
 - Executes steps in order
 - Tracks progress
@@ -149,6 +164,7 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 **Purpose**: Review all recent changes for quality and consistency.
 
 **What it reviews**:
+
 - Code style compliance
 - Philosophy alignment
 - Test coverage
@@ -156,6 +172,7 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 - Security considerations
 
 **Usage**:
+
 ```
 /review-changes
 ```
@@ -167,11 +184,13 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 **Purpose**: Deep review of specific files or directories.
 
 **Usage**:
+
 ```
 /review-code-at-path <file_or_directory>
 ```
 
 **Examples**:
+
 ```
 /review-code-at-path src/api/auth.py
 
@@ -182,12 +201,50 @@ Check our patterns in IMPLEMENTATION_PHILOSOPHY.md
 
 ## 🛠️ Creating Custom Commands
 
-### Command Structure
+### Claude Code
+
+#### Command Structure
 
 Create a new file in `.claude/commands/your-command.md`:
 
 ```markdown
 ## Usage
+
+`/your-command <required-arg> [optional-arg]`
+
+## Context
+
+- Brief description of what the command does
+- When and why to use it
+- Any important notes or warnings
+
+### Process
+
+1. First step with clear description
+2. Second step with details
+3. Continue for all steps
+4. Include decision points
+5. Handle edge cases
+
+## Output Format
+
+Describe what the user will see:
+
+- Success messages
+- Error handling
+- Next steps
+- Any generated artifacts
+```
+
+### Gemini CLI
+
+#### Command Structure
+
+Create a new file in `.gemini/commands/your-command.toml`:
+
+```toml
+description = "Brief description of the command"
+prompt = """## Usage
 
 `/your-command <required-arg> [optional-arg]`
 
@@ -212,6 +269,7 @@ Describe what the user will see:
 - Error handling
 - Next steps
 - Any generated artifacts
+"""
 ```
 
 ### Best Practices
@@ -225,17 +283,20 @@ Describe what the user will see:
 ### Advanced Features
 
 #### Sub-Agent Orchestration
+
 ```markdown
 ## Process
 
 1. **Architect Agent**: Design the approach
+
    - Consider existing patterns
    - Plan component structure
-   
+
 2. **Implementation Agent**: Build the solution
+
    - Follow architecture plan
    - Apply coding standards
-   
+
 3. **Testing Agent**: Validate everything
    - Unit tests
    - Integration tests
@@ -243,10 +304,12 @@ Describe what the user will see:
 ```
 
 #### Conditional Logic
+
 ```markdown
 ## Process
 
 1. Check if Docker is running
+
    - If yes: Use containerized approach
    - If no: Use local development
 
@@ -257,6 +320,7 @@ Describe what the user will see:
 ```
 
 #### File Operations
+
 ```markdown
 ## Process
 
@@ -271,6 +335,7 @@ Describe what the user will see:
 ### Power Workflows
 
 **Full Feature Development**:
+
 ```
 /prime
 /create-plan "user authentication system"
@@ -280,6 +345,7 @@ Describe what the user will see:
 ```
 
 **Rapid Prototyping**:
+
 ```
 /ultrathink-task "create a dashboard mockup"
 /test-webapp-ui "check the dashboard"
@@ -287,6 +353,7 @@ Describe what the user will see:
 ```
 
 **Debug Session**:
+
 ```
 /prime
 [paste error]
@@ -317,4 +384,3 @@ When creating new commands:
 
 - [Automation Guide](automation.md) - Hooks and triggers
 - [Philosophy Guide](philosophy.md) - Guiding principles
-- [Team Guide](team-guide.md) - Sharing commands
