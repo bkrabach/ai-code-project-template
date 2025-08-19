@@ -118,6 +118,7 @@
     "docstrings",
     "dotenv",
     "edgehandle",
+    "endpointdlp",
     "fastmcp",
     "levelname",
     "levelno",
@@ -132,6 +133,7 @@
     "tamasfe",
     "toplevel",
     "uvicorn",
-    "venv"
+    "venv",
+    "worktree"
   ]
 }

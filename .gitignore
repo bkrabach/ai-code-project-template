@@ -48,7 +48,5 @@ logs
 ai_working/tmp
 
 # Ignore Windows Alternate Data Streams (ADS) files that may appear in WSL
-**/*Zone.Identifier
 **/*:Zone.Identifier
-**/*sec.endpointdlp
 **/*:sec.endpointdlp
