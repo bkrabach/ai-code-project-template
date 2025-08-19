@@ -4,12 +4,25 @@
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"]
     },
-    "browser-use": {
+    // TEMPORARILY DISABLED DUE TO 400 ERROR WHEN ENABLED
+    // "browser-use": {
+    //   "command": "uvx",
+    //   "args": ["browser-use[cli]", "--mcp"],
+    //   "env": {
+    //     "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+    //   }
+    // },
+    "repomix": {
+      "command": "npx",
+      "args": ["-y", "repomix", "--mcp"]
+    },
+    "zen": {
       "command": "uvx",
-      "args": ["browser-use[cli]", "--mcp"],
-      "env": {
-        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
-      }
+      "args": [
+        "--from",
+        "git+https://github.com/BeehiveInnovations/zen-mcp-server.git",
+        "zen-mcp-server"
+      ]
     }
   }
 }

@@ -6,7 +6,8 @@ This directory contains the core configuration and extensions that transform Cla
 
 ```
 .claude/
-├── commands/           # Custom commands that extend Claude Code
+├── agents/            # AI agents that assist with various tasks
+├── commands/          # Custom commands that extend Claude Code
 ├── tools/             # Shell scripts for automation and notifications
 ├── docs/              # Deep-dive documentation
 ├── settings.json      # Claude Code configuration
@@ -14,6 +15,14 @@ This directory contains the core configuration and extensions that transform Cla
 ```
 
 ## 🏗️ Architecture Overview
+
+### AI Agents
+
+The `agents/` directory contains the AI agents that assist with various tasks within Claude Code.
+
+- Each `.md` file defines a specific agent and its capabilities.
+- The agents can be composed together to handle more complex tasks.
+- Agents can also share data and context with each other.
 
 ### Custom Commands
 
@@ -29,6 +38,7 @@ The `tools/` directory contains scripts that integrate with Claude Code:
 
 - `notify.sh` - Cross-platform desktop notifications
 - `make-check.sh` - Intelligent quality check runner
+- `subagent-logger.py` - Logs interactions with sub-agents
 - Triggered by hooks defined in `settings.json`
 
 ### Configuration
@@ -48,6 +58,7 @@ The `tools/` directory contains scripts that integrate with Claude Code:
 3. Quality checks run automatically
 4. Notification hook triggers `notify.sh`
 5. You get desktop notification of results
+6. If sub-agents were used, `subagent-logger.py` logs their interactions to `.data/subagents-logs`
 
 ### Command Execution
 
@@ -65,6 +76,19 @@ The `tools/` directory contains scripts that integrate with Claude Code:
 4. Philosophy becomes executable through commands
 
 ## 🚀 Extending the Platform
+
+### Adding AI Agents
+
+Options:
+
+- [Preferred]: Create via Claude Code:
+  - Use the `/agents` command to define the agent's capabilities.
+  - Provide the definition for the agent's behavior and context.
+  - Let Claude Code perform its own optimization to improve the agent's performance.
+- [Alternative]: Create manually:
+  - Define the agent in a new `.md` file within `agents/`.
+  - Include all necessary context and dependencies.
+  - Must follow the existing agent structure and guidelines.
 
 ### Adding New Commands
 
@@ -130,6 +154,6 @@ Edit `settings.json`:
 
 ## 📚 Learn More
 
-- [Command Reference](docs/commands.md)
-- [Automation Guide](docs/automation.md)
-- [Notifications Setup](docs/notifications.md)
+- [Command Reference](../.ai/docs/commands.md)
+- [Automation Guide](../.ai/docs/automation.md)
+- [Notifications Setup](../.ai/docs/notifications.md)
