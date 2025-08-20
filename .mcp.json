@@ -4,14 +4,6 @@
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"]
     },
-    // TEMPORARILY DISABLED DUE TO 400 ERROR WHEN ENABLED
-    // "browser-use": {
-    //   "command": "uvx",
-    //   "args": ["browser-use[cli]", "--mcp"],
-    //   "env": {
-    //     "OPENAI_API_KEY": "${OPENAI_API_KEY}"
-    //   }
-    // },
     "repomix": {
       "command": "npx",
       "args": ["-y", "repomix", "--mcp"]
