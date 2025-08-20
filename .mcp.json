@@ -4,6 +4,13 @@
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"]
     },
+    "browser-use": {
+      "command": "uvx",
+      "args": ["browser-use[cli]==0.5.10", "--mcp"],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
+    },
     "repomix": {
       "command": "npx",
       "args": ["-y", "repomix", "--mcp"]
