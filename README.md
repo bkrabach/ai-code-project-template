@@ -33,6 +33,16 @@ cd [your-new-repo-name]
 
 **That's it.** You're now developing at AI velocity with human creativity.
 
+---
+
+## Explore the Interactive Deep Wiki
+
+Want to dive deeper? Check out this auto-generated interactive documentation site!
+
+### [**📖 Visit the Deep Wiki → https://deepwiki.com/bkrabach/ai-code-project-template**](https://deepwiki.com/bkrabach/ai-code-project-template)
+
+---
+
 ## 🎯 Who This Is For
 
 ### 🎨 **Product Managers & Designers**
